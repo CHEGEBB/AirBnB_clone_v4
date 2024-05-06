@@ -1,65 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- This document declares the HTML version and language -->
+<!DOCTYPE html> 
+<html lang="en"> 
+  <!-- The head section contains meta-information about the document -->
   <head>
-    <meta charset="UTF-8">
+    <!-- Declares the character encoding of the document -->
+    <meta charset="UTF-8"> 
+    <!-- Links to external stylesheets for styling the page -->
     <link rel="stylesheet" type="text/css" href="../static/styles/4-common.css">
     <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css">
     <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css">
     <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css">
     <link type="text/css" rel="stylesheet" href="../static/styles/8-places.css">
+    <!-- Sets the icon for the website -->
     <link rel="icon" href="../static/images/icon.png" />
-    <title>HBnB</title>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="static/scripts/4-hbnb.js"></script>
+    <!-- Sets the title of the document -->
+    <title>HBnB</title> 
+    <!-- Link to jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Link to custom JavaScript file -->
+    <script src="static/scripts/4-hbnb.js"></script>
   </head>
-  <body>
-    <header>
-      <div class="logo"></div>
-	  <div id="api_status" class="available">
 
-	  </div>
+  <!-- The body section contains the visible content of the document -->
+  <body>
+    <!-- Represents the header section of the page -->
+    <header> 
+      <!-- Placeholder for logo -->
+      <div class="logo"></div> 
+      <!-- Container for API status -->
+      <div id="api_status" class="available">
+      </div>
     </header>
-    <div class="container">
-      <section class="filters">
-	<div class="locations">
-	  <h3>States</h3>
-	  <h4>&nbsp;</h4>
-	  <div class="popover">
-	    <ul>
-	      {% for state in states %}
-	      <li>
-		<h2>{{ state[0].name }}:</h2>
-		<ul>
-		  {% for city in state[1] %}
-		  <li>{{ city.name }}</li>
-		  {% endfor %}
-		</ul>
-	      </li>
-	      {% endfor %}
-	    </ul>
-	  </div>
-	</div>
-	<div class="amenities">
-	  <h3>Amenities</h3>
-	  <h4>&nbsp;</h4>
-	  <div class="popover">
-	    <ul>
-	      {% for amenity in amenities %}
-	      <li><input type="checkbox" data-id="{{ amenity.id }}" data-name="{{ amenity.name }}" > {{ amenity.name }}</li>
-	      {% endfor %}
-	    </ul>
-	  </div>
-	</div>
-	<button type="button">Search</button>
+
+    <!-- Container for the main content of the page -->
+    <div class="container"> 
+      <!-- Section for filtering options -->
+      <section class="filters"> 
+        <!-- Section for selecting locations -->
+        <div class="locations"> 
+          <!-- Heading for states -->
+          <h3>States</h3> 
+          <!-- Placeholder for state selection -->
+          <h4>&nbsp;</h4> 
+          <!-- Popover for displaying states and cities -->
+          <div class="popover"> 
+            <!-- Unordered list for states and cities -->
+            <ul> 
+              <!-- Loop through states -->
+              {% for state in states %} 
+              <!-- List item for each state -->
+              <li> 
+                <!-- State name heading -->
+                <h2>{{ state[0].name }}:</h2> 
+                <!-- Nested list for cities within the state -->
+                <ul> 
+                  <!-- Loop through cities -->
+                  {% for city in state[1] %} 
+                  <!-- List item for each city -->
+                  <li>{{ city.name }}</li> 
+                  {% endfor %}
+                </ul>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <!-- Section for selecting amenities -->
+        <div class="amenities"> 
+          <!-- Heading for amenities -->
+          <h3>Amenities</h3> 
+          <!-- Placeholder for amenity selection -->
+          <h4>&nbsp;</h4> 
+          <!-- Popover for displaying amenities -->
+          <div class="popover"> 
+            <!-- Unordered list for amenities -->
+            <ul> 
+              <!-- Loop through amenities -->
+              {% for amenity in amenities %} 
+              <!-- List item for each amenity -->
+              <li><input type="checkbox" data-id="{{ amenity.id }}" data-name="{{ amenity.name }}" > {{ amenity.name }}</li> 
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <!-- Button for initiating search -->
+        <button type="button">Search</button> 
       </section>
-      <div class="placesh1"><h1>Places</h1></div>
-      <section class="places">
-	<!-- <h1>Places</h1> -->
-	
+
+      <!-- Heading for places section -->
+      <div class="placesh1"><h1>Places</h1></div> 
+
+      <!-- Section for displaying places -->
+      <section class="places"> 
+        <!-- Placeholder for places -->
+        <!-- <h1>Places</h1> -->
       </section>
     </div>
-    <footer>
-      <p>Holberton School</p>
+
+    <!-- Footer section of the page -->
+    <footer> 
+      <!-- School name in the footer -->
+      <p>Holberton School</p> 
     </footer>
-  </body>
-</html>
+  </body> <!-- Closing tag for body -->
+</html> <!-- Closing tag for HTML document -->
