@@ -1,5 +1,13 @@
 #!/usr/bin/python3
-""" Starts a Flash Web Application """
+
+""" 
+This script starts a Flask web application
+It does the following:
+- starts a Flask web application
+- listens on
+- has a route / that displays "Hello HBNB!"
+"""
+
 from models import storage
 from models.state import State
 from models.city import City
@@ -9,19 +17,26 @@ from os import environ
 from flask import Flask, render_template
 import uuid
 app = Flask(__name__)
-# app.jinja_env.trim_blocks = True
-# app.jinja_env.lstrip_blocks = True
 
 
 @app.teardown_appcontext
 def close_db(error):
-    """ Remove the current SQLAlchemy Session """
+    """
+    This removes the current SQLAlchemy Session
+    It is triggered when the application context is popped
+    It closes the database or file storage
+    It is triggered when the application context is popped
+    """
     storage.close()
 
 
 @app.route('/1-hbnb/', strict_slashes=False)
 def hbnb():
-    """ HBNB is alive! """
+    """
+    This function renders a template
+    It checks if the environment variable HBNB_TYPE_STORAGE is equal to db
+    And checks if HBNB_TYPE_STORAGE is equal to file
+    """
     states = storage.all(State).values()
     states = sorted(states, key=lambda k: k.name)
     st_ct = []
@@ -43,5 +58,8 @@ def hbnb():
 
 
 if __name__ == "__main__":
-    """ Main Function """
+    """
+    This condition checks if the __name__ variable is equal to __main__
+    If true, the script starts a Flask web application
+    """
     app.run(host='0.0.0.0', port=5000)
